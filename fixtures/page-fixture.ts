@@ -3,16 +3,20 @@ import { CheckoutInfoPage } from "../pages/CheckoutInfoPage";
 import { CheckoutOverviewPage } from "../pages/CheckoutOverviewPage";
 import { CartPage } from "../pages/CartPage";
 import { InventoryPage } from "../pages/InventoryPage";
+import { InventoryItemPage } from "../pages/InventoryItemPage";
 import { LoginPage } from "../pages/LoginPage";
 import { CheckoutCompletePage } from "../pages/CheckoutCompletePage";
+import { CatalogLazyLoadPage } from "../pages/CatalogLazyLoadPage";
 
 type PageFixtures = {
+  loginPage: LoginPage;
   inventoryPage: InventoryPage;
+  inventoryItemPage: InventoryItemPage;
   cartPage: CartPage;
   checkoutInfoPage: CheckoutInfoPage;
   checkoutOverviewPage: CheckoutOverviewPage;
-  loginPage: LoginPage;
   checkoutCompletePage: CheckoutCompletePage;
+  catalogLazyLoadPage: CatalogLazyLoadPage;
 };
 
 export const test = base.extend<PageFixtures>({
@@ -33,6 +37,12 @@ export const test = base.extend<PageFixtures>({
   },
   checkoutCompletePage: async ({ page }, use) => {
     await use(new CheckoutCompletePage(page));
+  },
+  inventoryItemPage: async ({ page }, use) => {
+    await use(new InventoryItemPage(page));
+  },
+  catalogLazyLoadPage: async ({ page }, use) => {
+    await use(new CatalogLazyLoadPage(page));
   },
 });
 

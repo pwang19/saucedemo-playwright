@@ -1,5 +1,5 @@
 import { Locator, Page } from "@playwright/test";
-import { Header } from "./Header";
+import { Header } from "../components/header";
 
 export class CheckoutOverviewPage {
   readonly page: Page;

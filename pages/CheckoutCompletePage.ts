@@ -1,5 +1,5 @@
 import { Locator, Page } from "@playwright/test";
-import { Header } from "./Header";
+import { Header } from "../components/header";
 import { expect } from "../fixtures/page-fixture";
 
 export class CheckoutCompletePage {

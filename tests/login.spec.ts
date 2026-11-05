@@ -33,4 +33,31 @@ test.describe("Authentication Tests", () => {
     );
     await expect(page).toHaveURL(/.*inventory.html/);
   });
+
+  test("error message is displayed when username and password is empty", async ({
+    loginPage,
+  }) => {
+    await loginPage.login("", users.standard.password);
+    await expect(loginPage.errorMessage).toContainText(
+      "Epic sadface: Username is required",
+    );
+  });
+
+  test("error message is displayed when password is empty", async ({
+    loginPage,
+  }) => {
+    await loginPage.login(users.standard.username, "");
+    await expect(loginPage.errorMessage).toContainText(
+      "Epic sadface: Password is required",
+    );
+  });
+
+  test("error message is displayed when username and password is incorrect", async ({
+    loginPage,
+  }) => {
+    await loginPage.login("invalid_user", "invalid_password");
+    await expect(loginPage.errorMessage).toContainText(
+      "Epic sadface: Username and password do not match any user in this service",
+    );
+  });
 });

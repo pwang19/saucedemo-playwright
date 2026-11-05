@@ -1,9 +1,13 @@
 import { Locator, Page } from "@playwright/test";
-import { Header } from "./Header";
+import { Footer } from "../components/footer";
+import { Header } from "../components/header";
+import { Sidebar } from "../components/sidebar";
 
 export class CartPage {
   readonly page: Page;
   readonly header: Header;
+  readonly footer: Footer;
+  readonly sidebar: Sidebar;
   readonly cartItems: Locator;
   readonly checkoutButton: Locator;
   readonly continueShoppingButton: Locator;
@@ -11,6 +15,8 @@ export class CartPage {
   constructor(page: Page) {
     this.page = page;
     this.header = new Header(page);
+    this.footer = new Footer(page);
+    this.sidebar = new Sidebar(page);
     this.cartItems = page.getByTestId("inventory-item");
     this.checkoutButton = page.getByRole("button", { name: "Checkout" });
     this.continueShoppingButton = page.getByRole("button", {
